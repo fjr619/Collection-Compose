@@ -24,7 +24,6 @@ import androidx.compose.foundation.layout.only
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -83,6 +82,8 @@ fun ProfileCard() {
     val screenHeight = configuration.screenHeightDp.dp
 
     val toolbarHeight = 200.dp
+    val defaultGridPaddingTop = 180.dp
+    val defaultProfileImageSize = 80.dp
     val toolbarHeightPx = with(LocalDensity.current) { toolbarHeight.toPx() }
     val toolbarOffsetHeightPx = remember { mutableFloatStateOf(0f) }
     var tempToolbarOffsetHeightPx by remember { mutableFloatStateOf(0f) }
@@ -146,16 +147,18 @@ fun ProfileCard() {
     }
 
     // Dynamically calculate topPadding based on scrollProgress
-    val topPaddingContainer by remember {
+    val gridPaddingTop by remember {
         derivedStateOf {
             // Interpolating between 180.dp and 0.dp based on scrollProgress
-            (screenHeight * 0.2f * scrollProgress).coerceAtLeast(0.dp)
+            (defaultGridPaddingTop * scrollProgress).coerceAtLeast(0.dp)
         }
     }
 
+    //hanya 30% dari image yang akan overlapping
+    //offset di hitung dari jarak defaultGridPaddingTop dikurang dengan 30% dari image size
     val profileImageOffset by remember {
         derivedStateOf {
-            (screenHeight * 0.1f * scrollProgress).coerceAtLeast(0.dp)
+            ((defaultGridPaddingTop - (defaultProfileImageSize * 30/100)) * scrollProgress).coerceAtLeast(0.dp)
         }
     }
     val profileImageContainerOffsetPx = with(LocalDensity.current) { profileImageOffset.toPx() }
@@ -163,7 +166,7 @@ fun ProfileCard() {
     val profileImageSize by remember {
         derivedStateOf {
             // Interpolate the size between 80.dp and 50.dp based on scrollProgress
-            lerp(start = 50.dp, stop = 80.dp, fraction = scrollProgress)
+            lerp(start = 50.dp, stop = defaultProfileImageSize, fraction = scrollProgress)
         }
     }
 
@@ -173,25 +176,29 @@ fun ProfileCard() {
         }
     }
 
-    val spacerProfileImage by remember {
-        derivedStateOf {
-            lerp(start = 70.dp, stop = 50.dp, fraction = scrollProgress)
-        }
-    }
+//    val spacerProfileImage by remember {
+//        derivedStateOf {
+//            lerp(start = 60.dp, stop = 60.dp, fraction = scrollProgress)
+//        }
+//    }
 
     val safeDrawingTop = WindowInsets.safeDrawing
         .only(WindowInsetsSides.Top).asPaddingValues().calculateTopPadding()
 
     val stickyHeaderContainerPaddingTop by remember {
         derivedStateOf {
-            // Interpolate the size between 80.dp and 50.dp based on scrollProgress
             lerp(start = safeDrawingTop, stop = 0.dp, fraction = scrollProgress)
         }
     }
 
-    LaunchedEffect(key1 = topPaddingContainer, key2 = toolbarOffsetHeightPx) {
-        if (topPaddingContainer == 0.dp) {
-            println("toolbarOffsetHeightPx ${toolbarOffsetHeightPx.value}")
+    val profileImageContainerPaddingTop by remember {
+        derivedStateOf {
+            lerp(start = safeDrawingTop, stop = 0.dp, fraction = scrollProgress)
+        }
+    }
+
+    LaunchedEffect(key1 = gridPaddingTop, key2 = toolbarOffsetHeightPx) {
+        if (gridPaddingTop == 0.dp) {
             tempToolbarOffsetHeightPx = toolbarOffsetHeightPx.floatValue
         }
     }
@@ -245,13 +252,15 @@ fun ProfileCard() {
             horizontalArrangement = Arrangement.spacedBy(16.dp),
             modifier = Modifier
                 .fillMaxSize()
-                .padding(top = topPaddingContainer)
+                .padding(top = gridPaddingTop)
                 .clip(RoundedCornerShape(topStart = cornerRadius, topEnd = cornerRadius))
                 .background(Color.White) // Incremental rounded corners
             ,
 
-            contentPadding = PaddingValues(start = 16.dp, end = 16.dp, bottom = WindowInsets.safeDrawing
-                .only(WindowInsetsSides.Bottom).asPaddingValues().calculateBottomPadding())
+            contentPadding = PaddingValues(
+                start = 16.dp, end = 16.dp, bottom = WindowInsets.safeDrawing
+                    .only(WindowInsetsSides.Bottom).asPaddingValues().calculateBottomPadding()
+            )
         ) {
             // Populate grid items
             stickyHeader {
@@ -259,10 +268,10 @@ fun ProfileCard() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .background(Color.White)
-                        .padding( top = stickyHeaderContainerPaddingTop)
+                        .padding(top = stickyHeaderContainerPaddingTop)
 
                 ) {
-                    Spacer(modifier = Modifier.height(spacerProfileImage))
+                    Spacer(modifier = Modifier.height(60.dp)) //spacerProfileImage
                     Text(
 
                         text = "NAME",
@@ -286,13 +295,16 @@ fun ProfileCard() {
             }
         }
 
-        //Profile Header
         Box(
             modifier = Modifier
                 .padding(horizontal = 16.dp)
-                .statusBarsPadding()
-                .offset { IntOffset(x = 0, y = profileImageContainerOffsetPx.roundToInt()) }
-                .align(Alignment.TopStart) // Align it at the top center
+                .padding( top = profileImageContainerPaddingTop)
+                .offset {
+                    IntOffset(
+                        x = 0,
+                        y = profileImageContainerOffsetPx.roundToInt()
+                    )
+                }
         ) {
             Row(Modifier.height(IntrinsicSize.Max), verticalAlignment = Alignment.Bottom) {
                 ProfileImageWithAddButton(
@@ -350,7 +362,6 @@ fun ProfileCard() {
                 ) {
                     IconButton(
                         modifier = Modifier
-                            .statusBarsPadding()
                             .alpha((1f - (scrollProgress / 0.3f)).coerceIn(0f, 1f)),
                         onClick = {}
                     ) {
@@ -362,11 +373,8 @@ fun ProfileCard() {
                         )
                     }
                 }
-
             }
-
         }
-
     }
 }
 
@@ -428,10 +436,9 @@ fun ProfileImageWithAddButton(
 }
 
 
-
 @Preview
 @Composable
-fun  ProfileCardPreview(modifier: Modifier = Modifier) {
+fun ProfileCardPreview(modifier: Modifier = Modifier) {
     EdgeToEdgeTemplate(
         navMode = NavigationMode.ThreeButton,
         cameraCutoutMode = CameraCutoutMode.Middle,
