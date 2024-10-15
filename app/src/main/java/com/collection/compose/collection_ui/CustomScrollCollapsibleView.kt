@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,6 +26,8 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.rememberLazyGridState
@@ -64,6 +67,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
@@ -79,8 +83,7 @@ import kotlin.math.roundToInt
 @Composable
 fun ProfileCard() {
     val configuration = LocalConfiguration.current
-    val screenHeight = configuration.screenHeightDp.dp
-
+    
     val toolbarHeight = 200.dp
     val defaultGridPaddingTop = 180.dp
     val defaultProfileImageSize = 80.dp
@@ -290,7 +293,7 @@ fun ProfileCard() {
                 }
             }
 
-            items(12) { index ->
+            items(121) { index ->
                 GridItem(index)
             }
         }
@@ -306,12 +309,12 @@ fun ProfileCard() {
                     )
                 }
         ) {
-            Row(Modifier.height(IntrinsicSize.Max), verticalAlignment = Alignment.Bottom) {
+            Row(Modifier.height(IntrinsicSize.Max), verticalAlignment = Alignment.Bottom, horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+
                 ProfileImageWithAddButton(
-                    modifier = Modifier.size(profileImageSize),
+                    modifier = Modifier.size(profileImageSize).weight(1f),
                     modifierAdd = Modifier.size(profileAddImageSize)
                 )
-                Spacer(Modifier.width(16.dp))
                 Box(
                     modifier = Modifier
                         .background(
@@ -336,11 +339,13 @@ fun ProfileCard() {
                             text = "20/min",
                             color = Color.White,
                             fontSize = 14.sp,
+                            maxLines = 1,
+                            overflow = TextOverflow.MiddleEllipsis,
                             fontWeight = FontWeight.Bold
                         )
                     }
                 }
-                Spacer(Modifier.width(16.dp))
+
                 Box(
                     modifier = Modifier
                         .border(
@@ -353,11 +358,16 @@ fun ProfileCard() {
                         text = "120 Followers",
                         color = Color(0xFF9B51E0),
                         fontSize = 14.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.MiddleEllipsis,
                         fontWeight = FontWeight.Bold
                     )
                 }
+
+                Spacer(modifier = Modifier.weight(1f))
+
                 Box(
-                    modifier = Modifier.weight(1f),
+                    modifier = Modifier.wrapContentWidth(),
                     contentAlignment = Alignment.BottomEnd
                 ) {
                     IconButton(

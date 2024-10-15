@@ -86,4 +86,6 @@ dependencies {
 
     implementation(libs.androidx.compose.foundation)
     implementation("de.drick.compose:edge-to-edge-preview:0.3.0")
+    implementation(libs.androidx.material3.windowSizeClass)
+
 }
