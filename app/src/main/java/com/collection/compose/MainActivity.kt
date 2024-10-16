@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.collection.compose.collection_ui.ProfileCard
+import com.collection.compose.collection_ui.custom_scroll_toolbar.ExampleFlexibleTopBar
 import com.collection.compose.ui.theme.CollectionComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -29,7 +30,7 @@ class MainActivity : ComponentActivity() {
                 println("windowSizeClass width ${windowSizeClass.widthSizeClass}")
 
                 Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
-                    ProfileCard()
+                    ExampleFlexibleTopBar(innerPadding)
                 }
             }
         }
