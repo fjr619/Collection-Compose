@@ -88,4 +88,6 @@ dependencies {
     implementation("de.drick.compose:edge-to-edge-preview:0.3.0")
     implementation(libs.androidx.material3.windowSizeClass)
 
+    implementation("io.coil-kt.coil3:coil-compose:3.0.0-rc02")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.0.0-rc02")
 }

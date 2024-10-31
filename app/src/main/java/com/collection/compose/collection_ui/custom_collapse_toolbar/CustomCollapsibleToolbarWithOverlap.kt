@@ -1,4 +1,4 @@
-package com.collection.compose.collection_ui
+package com.collection.compose.collection_ui.custom_collapse_toolbar
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.ExperimentalFoundationApi
@@ -16,7 +16,6 @@ import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.WindowInsetsSides
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.aspectRatio
-import androidx.compose.foundation.layout.defaultMinSize
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -26,7 +25,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -81,7 +79,7 @@ import kotlin.math.roundToInt
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun ProfileCard() {
+fun CustomCollapsibleToolbarWithOverlap() {
     val configuration = LocalConfiguration.current
     
     val toolbarHeight = 200.dp
@@ -458,7 +456,7 @@ fun ProfileCardPreview(modifier: Modifier = Modifier) {
         isInvertedOrientation = false
     ) {
         CollectionComposeTheme {
-            ProfileCard()
+            CustomCollapsibleToolbarWithOverlap()
         }
     }
 }
