@@ -9,9 +9,11 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.displayCutoutPadding
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.safeContentPadding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBars
@@ -34,6 +36,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.dp
 import coil3.compose.AsyncImage
+import com.collection.compose.collection_ui.util.DefaultPreviewPhone
+import com.collection.compose.collection_ui.util.PreviewPhone
 import kotlin.math.min
 
 @Composable
@@ -158,5 +162,15 @@ fun LazyColumnLikeGrid() {
                 }
             }
         }
+    }
+}
+
+@PreviewPhone
+@Composable
+fun LazyColumnLikeGridPreview() {
+    DefaultPreviewPhone(
+        modifier = Modifier.displayCutoutPadding()
+    ) {
+        LazyColumnLikeGrid()
     }
 }

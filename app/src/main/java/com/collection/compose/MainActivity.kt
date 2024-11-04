@@ -11,6 +11,7 @@ import androidx.compose.material3.Surface
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.Modifier
+import com.collection.compose.collection_ui.CarouselWithScalingEffect
 import com.collection.compose.collection_ui.custom_collapse_toolbar.CustomCollapsibleToolbarWithOverlap
 import com.collection.compose.collection_ui.custom_scroll_toolbar.ExampleFlexibleTopBar
 import com.collection.compose.collection_ui.lazy_column_like_grid.LazyColumnLikeGrid
@@ -30,7 +31,8 @@ class MainActivity : ComponentActivity() {
                 Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
 //                    CustomCollapsibleToolbarWithOverlap()
                     LazyColumnLikeGrid()
-
+//                    val items = List(10) { "Item $it" }
+//                    CarouselWithScalingEffect(items = items)
                 }
             }
         }
