@@ -1,5 +1,8 @@
 # Collection
 
+## [Draggable rating bar](https://github.com/fjr619/Collection-Compose/blob/master/app/src/main/java/com/collection/compose/collection_ui/draggable_rating_bar/ExampleDraggableRatingBar.kt)
+![unknown_2024 11 05-13 51](https://github.com/user-attachments/assets/3cb10537-96c4-4d9b-b994-b669f683942d)
+
 ## [Avatar](https://github.com/fjr619/Collection-Compose/blob/master/app/src/main/java/com/collection/compose/collection_ui/Avatar.kt  )
 ![image](https://github.com/user-attachments/assets/385f44d5-a802-409c-8d66-7ab9b3e92e8e)
 
