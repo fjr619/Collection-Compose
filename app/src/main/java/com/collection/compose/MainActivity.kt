@@ -17,6 +17,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.collection.compose.collection_ui.draggable_rating_bar.ExampleDraggableRatingBar
+import com.collection.compose.collection_ui.pulse_effect.ExamplePulseEffect
 import com.collection.compose.ui.theme.CollectionComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -32,7 +33,8 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
 //                    CustomCollapsibleToolbarWithOverlap()
-                    ExampleDraggableRatingBar()
+//                    ExampleDraggableRatingBar()
+                    ExamplePulseEffect()
 //                    ExampleFlexibleTopBar(innerPadding)
 //                    val items = List(10) { "Item $it" }
 //                    CarouselWithScalingEffect(items = items)
