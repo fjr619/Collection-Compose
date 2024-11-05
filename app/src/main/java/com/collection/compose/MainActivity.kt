@@ -16,7 +16,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.collection.compose.draggable_rating_bar.ExampleDraggableRatingBar
+import com.collection.compose.collection_ui.draggable_rating_bar.ExampleDraggableRatingBar
 import com.collection.compose.ui.theme.CollectionComposeTheme
 
 class MainActivity : ComponentActivity() {

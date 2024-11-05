@@ -1,4 +1,4 @@
-package com.collection.compose.draggable_rating_bar
+package com.collection.compose.collection_ui.draggable_rating_bar
 
 import androidx.annotation.FloatRange
 import androidx.compose.foundation.gestures.detectHorizontalDragGestures

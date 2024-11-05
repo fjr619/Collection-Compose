@@ -1,4 +1,4 @@
-package com.collection.compose.draggable_rating_bar
+package com.collection.compose.collection_ui.draggable_rating_bar
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.safeContentPadding
