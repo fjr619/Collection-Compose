@@ -1,5 +1,9 @@
 # Collection
 
+## [Pulse Effect](https://github.com/fjr619/Collection-Compose/blob/master/app/src/main/java/com/collection/compose/collection_ui/pulse_effect/ExamplePulseEffect.kt)
+![unknown_2024 11 05-14 08](https://github.com/user-attachments/assets/4e2a3877-f364-4088-b413-28d94640c326)
+
+
 ## [Draggable rating bar](https://github.com/fjr619/Collection-Compose/blob/master/app/src/main/java/com/collection/compose/collection_ui/draggable_rating_bar/ExampleDraggableRatingBar.kt)
 ![unknown_2024 11 05-13 51](https://github.com/user-attachments/assets/3cb10537-96c4-4d9b-b994-b669f683942d)
 
