@@ -6,15 +6,17 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableFloatStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.collection.compose.collection_ui.CarouselWithScalingEffect
-import com.collection.compose.collection_ui.custom_collapse_toolbar.CustomCollapsibleToolbarWithOverlap
-import com.collection.compose.collection_ui.custom_scroll_toolbar.ExampleFlexibleTopBar
-import com.collection.compose.collection_ui.lazy_column_like_grid.LazyColumnLikeGrid
+import androidx.compose.ui.unit.dp
+import com.collection.compose.draggable_rating_bar.ExampleDraggableRatingBar
 import com.collection.compose.ui.theme.CollectionComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -30,7 +32,8 @@ class MainActivity : ComponentActivity() {
 
                 Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
 //                    CustomCollapsibleToolbarWithOverlap()
-                    LazyColumnLikeGrid()
+                    ExampleDraggableRatingBar()
+//                    ExampleFlexibleTopBar(innerPadding)
 //                    val items = List(10) { "Item $it" }
 //                    CarouselWithScalingEffect(items = items)
                 }
