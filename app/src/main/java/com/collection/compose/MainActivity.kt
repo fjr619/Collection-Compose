@@ -6,18 +6,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableFloatStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
-import com.collection.compose.collection_ui.draggable_rating_bar.ExampleDraggableRatingBar
-import com.collection.compose.collection_ui.pulse_effect.ExamplePulseEffect
+import com.collection.compose.animated_placeholder.ExampleAnimatedPlaceholder
 import com.collection.compose.ui.theme.CollectionComposeTheme
 
 class MainActivity : ComponentActivity() {
@@ -31,10 +24,12 @@ class MainActivity : ComponentActivity() {
                 val windowSizeClass = calculateWindowSizeClass(activity = this)
                 println("windowSizeClass width ${windowSizeClass.widthSizeClass}")
 
-                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
+                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
 //                    CustomCollapsibleToolbarWithOverlap()
 //                    ExampleDraggableRatingBar()
-                    ExamplePulseEffect()
+//                    ExamplePulseEffect()
+//                    ExampleAnimatedPlaceholder()
+                    ExampleAnimatedPlaceholder()
 //                    ExampleFlexibleTopBar(innerPadding)
 //                    val items = List(10) { "Item $it" }
 //                    CarouselWithScalingEffect(items = items)
