@@ -1,4 +1,4 @@
-package com.collection.compose.animated_placeholder
+package com.collection.compose.collection_ui.animated_placeholder
 
 import androidx.compose.animation.AnimatedContent
 import androidx.compose.animation.ContentTransform

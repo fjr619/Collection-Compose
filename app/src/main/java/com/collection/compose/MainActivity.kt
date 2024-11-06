@@ -10,7 +10,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.windowsizeclass.ExperimentalMaterial3WindowSizeClassApi
 import androidx.compose.material3.windowsizeclass.calculateWindowSizeClass
 import androidx.compose.ui.Modifier
-import com.collection.compose.animated_placeholder.ExampleAnimatedPlaceholder
+import com.collection.compose.collection_ui.animated_placeholder.ExampleAnimatedPlaceholder
 import com.collection.compose.ui.theme.CollectionComposeTheme
 
 class MainActivity : ComponentActivity() {

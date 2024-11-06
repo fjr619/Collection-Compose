@@ -1,4 +1,4 @@
-package com.collection.compose.animated_placeholder
+package com.collection.compose.collection_ui.animated_placeholder
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
