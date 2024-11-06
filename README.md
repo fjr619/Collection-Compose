@@ -1,5 +1,9 @@
 # Collection
 
+## [Animated Placeholder](https://github.com/fjr619/Collection-Compose/blob/master/app/src/main/java/com/collection/compose/collection_ui/animated_placeholder/ExampleAnimatedPlaceholder.kt)
+![unknown_2024 11 06-20 54_cut](https://github.com/user-attachments/assets/6f99784f-f020-4a7f-886f-b7509303fdfb)
+
+
 ## [Pulse Effect](https://github.com/fjr619/Collection-Compose/blob/master/app/src/main/java/com/collection/compose/collection_ui/pulse_effect/ExamplePulseEffect.kt)
 ![unknown_2024 11 05-14 08](https://github.com/user-attachments/assets/4e2a3877-f364-4088-b413-28d94640c326)
 
